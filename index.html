@@ -35,6 +35,27 @@
   </style>
 
 <script>
+    const hero = document.querySelector('.hero');
+    const text = document.querySelector('h1');
+
+    function shadow(e) {
+        //const width = hero.offsetWidth;
+        //const height = hero.offsetHeight;
+        //same as the above
+        const {offsetWidth: width, offsetHeight: height} = hero;
+        let {offsetX: x, offsetY: y} = e;
+        //console.log(x, y) logs the offsets and if you are hovering a child element it wil start from zero so this must be prevented
+
+        if (this !== e.target) { //this = hero it won't change  &  e.target = can be the hero or it's child, so we must sum the values when e.target it's not hero
+            x = x + e.target.offsetLeft;
+            y = y + e.target.offsetTop;
+        }
+
+
+    }
+
+    hero.addEventListener('mousemove', shadow);
+
 </script>
 </body>
 </html>
